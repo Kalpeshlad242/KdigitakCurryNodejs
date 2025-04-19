@@ -16,12 +16,12 @@
     "url": "git+https://github.com/Kalpeshlad242/KdigitakCurryNodejs.git"
   },
   "lint-staged": {
-    "**/*.{js,ts,jsx,tsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
-  },
+  "**/*.{js,ts,jsx,tsx}": [
+    "eslint --fix",
+    "prettier --write"
+  ]
+}
+,
   "keywords": [],
   "author": "",
   "license": "ISC",
