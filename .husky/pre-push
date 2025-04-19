@@ -1,3 +1,4 @@
-mkdir -p .husky
-echo -e '#!/usr/bin/env sh\n. "$(dirname "$0")/_/husky.sh"\n\nnpx lint-staged' > .husky/pre-push
-chmod +x .husky/pre-push
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx lint-staged
