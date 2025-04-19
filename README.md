@@ -10,3 +10,11 @@ npm install eslint --save-dev
 
 #Git
 .ignore
+
+npm install --save-dev @eslint/js eslint globals eslint-config
+npx eslint --init
+npx eslint .
+npx eslint . --fix
+
+npm install --save-dev prettier eslint-plugin-prettier eslint-config-prettier
+npm install --save-dev husky lint-staged prettier eslint-config-prettier eslint-plugin-prettier
