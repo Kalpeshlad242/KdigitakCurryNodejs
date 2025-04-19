@@ -15,12 +15,14 @@
     "type": "git",
     "url": "git+https://github.com/Kalpeshlad242/KdigitakCurryNodejs.git"
   },
-  "lint-staged": {
+ "lint-staged": {
   "**/*.{js,ts,jsx,tsx}": [
-    "eslint --fix",
+    "eslint",
     "prettier --write"
   ]
 }
+
+
 ,
   "keywords": [],
   "author": "",
