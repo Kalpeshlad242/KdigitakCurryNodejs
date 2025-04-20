@@ -13,15 +13,13 @@ exports.getInstructor = async (req, res) => {
 // Create new course
 exports.createInstructor = async (req, res) => {
     try {
-        const { name, level, description, image } = req.body;
-        
-        if (!name || !level || !description || !image) {
-            return res.status(400).json({ error: "All fields are required: name, level, description, image" });
+        const { name, email } = req.body;
+        if (!name || !email) {
+            return res.status(400).json({ error: "All fields are required: name, email" });
         }
-
-        const newCourse = new Course({ name, level, description, image });
-        await newCourse.save();
-        res.status(201).json(newCourse);
+        const newInstructor = new Instructor({ name, level, description, image });
+        await newInstructor.save();
+        res.status(201).json(newInstructor);
     } catch (err) {
         res.status(500).json({ error: "Server Error" });
     }
@@ -31,7 +29,7 @@ exports.createInstructor = async (req, res) => {
 exports.updateInstructor = async (req, res) => {
     try {
         const { id } = req.params;
-        const updated = await Course.findByIdAndUpdate(id, req.body, { new: true });
+        const updated = await Instructor.findByIdAndUpdate(id, req.body, { new: true });
 
         if (!updated) {
             return res.status(404).json({ error: "Instructor not found" });
