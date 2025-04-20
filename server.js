@@ -8,6 +8,7 @@ app.use(express.json());
 app.use('/api/instructors', require('./routes/instructorRoutes'));
 app.use('/api/courses', require('./routes/courseRoutes'));
 app.use('/api/lectures', require('./routes/lectureRoutes'));
+app.use('/api/auth', require('./routes/authRoutes'));
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
