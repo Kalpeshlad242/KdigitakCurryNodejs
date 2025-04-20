@@ -2,30 +2,47 @@ const Lecture = require('../model/Lecture');
 
 exports.getAnalytics = async (req, res) => {
   try {
-    const totalLectures = await Lecture.countDocuments();
-
-    const attendedCount = await Lecture.countDocuments({ attendanceStatus: 'Attended' });
-    const notAttendedCount = await Lecture.countDocuments({ attendanceStatus: 'Not Attended' });
-
-    const lecturesPerCourse = await Lecture.aggregate([
-      {
-        $group: {
-          _id: "$courseName",
-          count: { $sum: 1 }
+    const [totalLectures, attendedCount, notAttendedCount, lecturesPerCourse, upcomingLectures] = await Promise.all([
+      Lecture.countDocuments(),
+      Lecture.countDocuments({ attendanceStatus: 'Attended' }),
+      Lecture.countDocuments({ attendanceStatus: 'Not Attended' }),
+      Lecture.aggregate([
+        {
+          $lookup: {
+            from: 'courses',
+            localField: 'course',
+            foreignField: '_id',
+            as: 'courseInfo'
+          }
+        },
+        { $unwind: '$courseInfo' },
+        {
+          $group: {
+            _id: '$courseInfo.name',
+            count: { $sum: 1 }
+          }
         }
-      }
+      ]),
+      Lecture.find({ lectureDate: { $gte: new Date() } }).sort('lectureDate')
     ]);
 
-    const upcomingLectures = await Lecture.find({ lectureDate: { $gte: new Date() } }).sort('lectureDate');
-
-    res.json({
-      totalLectures,
-      attendedCount,
-      notAttendedCount,
-      lecturesPerCourse,
-      upcomingLectures
+    res.status(200).json({
+      success: true,
+      message: "Analytics fetched successfully",
+      data: {
+        totalLectures,
+        attendedCount,
+        notAttendedCount,
+        lecturesPerCourse,
+        upcomingLectures
+      }
     });
   } catch (err) {
-    res.status(500).json({ error: "Server Error" });
+    console.error("Error fetching analytics:", err);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch analytics data",
+      error: err.message
+    });
   }
 };
