@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const lectureCtrl = require('../controllers/lectureController');
+const lectureCtrl = require('../controller/lectureController');
 
 router.post('/', lectureCtrl.scheduleLecture);
 
