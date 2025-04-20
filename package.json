@@ -2,28 +2,27 @@
   "name": "kdigitakcurrynodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "nodemon": "nodemon server.js",
     "lint": "eslint",
     "format": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint:fix": "eslint --fix ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kalpeshlad242/KdigitakCurryNodejs.git"
   },
- "lint-staged": {
-  "**/*.{js,ts,jsx,tsx}": [
-    "eslint",
-    "prettier --write"
-  ]
-}
-
-
-,
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx}": [
+      "prettier --write",  // Format with Prettier
+      "eslint --fix",      // Fix linting issues with ESLint
+      "git add"            // Stage the fixed files
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
