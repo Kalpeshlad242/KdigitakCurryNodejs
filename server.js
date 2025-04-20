@@ -31,7 +31,8 @@ app.get('/', (req, res) => {
 // MongoDB Connection with retry logic
 async function connectWithRetry() {
   try {
-    await mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    // Removed deprecated options `useNewUrlParser` and `useUnifiedTopology`
+    await mongoose.connect(MONGO_URI);
     console.log('MongoDB connected successfully');
   } catch (err) {
     console.error('MongoDB connection failed, retrying in 5 seconds...', err);

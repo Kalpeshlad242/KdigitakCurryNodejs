@@ -27,16 +27,17 @@
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "express-rate-limit": "^5.0.0",
     "express-validator": "^7.2.1",
+    "helmet": "^4.6.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.13.2",
-    "helmet": "^4.6.0",
-  "express-rate-limit": "^5.0.0"
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "jest": "^27.0.0",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3",
-     "jest": "^27.0.0",
-  "supertest": "^6.0.0"
+    "supertest": "^6.0.0"
   }
 }
