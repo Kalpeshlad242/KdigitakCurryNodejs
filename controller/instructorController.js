@@ -17,7 +17,7 @@ exports.createInstructor = async (req, res) => {
         if (!name || !email) {
             return res.status(400).json({ error: "All fields are required: name, email" });
         }
-        const newInstructor = new Instructor({ name, level, description, image });
+        const newInstructor = new Instructor({ name, email});
         await newInstructor.save();
         res.status(201).json(newInstructor);
     } catch (err) {
