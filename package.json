@@ -7,21 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "nodemon": "nodemon server.js",
-    "lint": "eslint",
-    "format": "prettier --write .",
-    "prepare": "husky install",
-    "lint:fix": "eslint --fix ."
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kalpeshlad242/KdigitakCurryNodejs.git"
-  },
-  "lint-staged": {
-    "**/*.{js,ts,jsx,tsx}": [
-      "prettier --write",  // Format with Prettier
-      "eslint --fix",      // Fix linting issues with ESLint
-      "git add"            // Stage the fixed files
-    ]
   },
   "keywords": [],
   "author": "",
@@ -38,14 +28,6 @@
     "mongoose": "^8.13.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.25.0",
-    "eslint": "^9.25.0",
-    "eslint-config": "^0.3.0",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-prettier": "^5.2.6",
-    "globals": "^16.0.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.5.1",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3"
   }
